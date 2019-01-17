@@ -1556,7 +1556,7 @@ $(document).click(() => {
     Tone.Transport.start();
   }*/
   if (!clicked) {
-    backgroundMusic = new sound("Dramatic Music.mp3")
+    backgroundMusic = new sound("Dramatic music.mp3")
     backgroundMusic.play();
     clicked = true;
   }
