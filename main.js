@@ -1362,7 +1362,7 @@ $("#manaUp").click(() => {
   }
 })
 $("#spellUp").click(() => {
-  if (coins >= spellCost) {
+  if (coins >= spellCost && spellsUnlocked <= 10) {
     coins -= spellCost;
     spellsUnlocked += 1;
     spellCost += 10;
