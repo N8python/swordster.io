@@ -176,7 +176,7 @@ var Transparency = new Spell(2500, () => {
   transparent = true
 }, () => {
   transparent = false
-}, 4)
+}, 16)
 var RowStrike = new Spell(1, () => {
   ctx.fillStyle = "White";
   ctx.fillRect(0, player.y * tileWidth, canvas.width(), tileWidth)
@@ -884,7 +884,7 @@ function init() {
   You become semi-invisible. You can walk through walls.
   Magic deals 50% damage against you. Physical attacks deal 25% damage.
   Duration: 2.5s,
-  Mana Cost: 4,
+  Mana Cost: 16,
   Key: 1`)
   $("#spell2").attr("title", `Row Strike:
   Does 2 damage to all enemies in your row.
