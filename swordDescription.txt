@@ -1,0 +1,6 @@
+The Sword: A basic weapon! Yay! That's all there is to it.
+You attack stuff with it. Wow.
+Stats:
+Damage: Small
+Cooldown: Moderate
+Range: 1 block

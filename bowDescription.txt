@@ -1,0 +1,6 @@
+The Bow: You can shoot arrows now.
+Now you don't have to get CLOSE to enemies to bring the pain.
+Stats:
+Damage: Poor
+Cooldown: Moderate
+Range: As far as the arrow can fly (this defies all the laws of physics)

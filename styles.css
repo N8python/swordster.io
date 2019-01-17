@@ -1,0 +1,50 @@
+h1 {
+  font-family: 'Roboto Slab';
+  text-align: center;
+  clear: both;
+}
+
+p {
+  font-family: 'Roboto Slab';
+}
+
+a {
+  color: black;
+  font-family: 'Roboto Slab';
+  text-shadow: none;
+}
+
+a:hover {
+  color: black;
+  text-shadow: none;
+}
+
+canvas {
+  display: inline;
+  border: 2px solid gray;
+}
+
+progress[value] {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+  appearance: none;
+  width: 125px;
+  height: 10px;
+  border: 1px;
+}
+
+#loading {
+  margin-top: 22.5%;
+}
+
+#healthStatus {
+  display: inline;
+  float: right;
+  border: 1px solid black;
+}
+
+#weaponArea {
+  display: inline;
+  float: left;
+  border: 1px solid black;
+}

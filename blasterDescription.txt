@@ -1,0 +1,7 @@
+The Laser Blaster: What is a laser blaster doing in a game with swords?
+We don't know. But why not use it, because it seems powerful.
+Stats:
+Damage: High
+Cooldown: High 
+Range: To the nearest wall
+Ability: 25% to destroy a wall on hit

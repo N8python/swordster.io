@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <title>Swordster.io</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="tone.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div id="loading">
+    <h1>Loading<i class="fa fa-spinner w3-jumbo w3-spin" style="margin-left: 10px;"></i></h1>
+  </div>
+  <div id="main" hidden>
+    <h1 class="w3-animate-opacity"><img src="logo.png" /></h1>
+    <div class="w3-padding w3-margin" id="weaponArea">
+      <p class="w3-margin">
+        Weapons:
+      </p>
+      <button class="w3-margin-left" id="weaponUp"><i class="fa fa-arrow-up"></i></button>
+      <div class="w3-border w3-margin w3-padding w3-display-container" id="weaponDiv">
+        <img src="swordDisplay.png" style="width: 100%" />
+        <p class="w3-padding w3-display-topleft w3-xlarge w3-black">Sword:</p>
+        <div class="w3-display-bottomright w3-tiny w3-black">
+          <p>
+            Damage: Small
+            <br />
+            Cooldown: Moderate
+            <br />
+            Range: 1 Block
+          </p>
+        </div>
+      </div>
+      <button class="w3-margin" id="cost" disabled>Owned</button>
+      <button class="w3-margin" id="select" disabled>Selected</button>
+      <br />
+      <button class="w3-margin-left" id="weaponDown"><i class="fa fa-arrow-down"></i></button>
+      <p class="w3-margin" id="coinP">
+        Coins: 0 <img src="coin.png" />
+      </p>
+      <button class="w3-circle w3-btn w3-border w3-padding w3-right w3-margin w3-hover-grey" id="sound"><i class="fa fa-volume-up w3-xlarge"></i></button>
+    </div>
+    <canvas width="512px" height="512px" id="canvas">
+      <p>
+        Your browser does not support canvas. Please update your browser.
+      </p>
+    </canvas>
+    <div class="w3-padding w3-margin" id="healthStatus">
+      <div class="w3-padding w3-bottombar" id="healthArea">
+        <p id="hp">
+          HP:
+          <progress value="10" max="10" id="hpBar"></progress>
+          <img src="heart.png" />
+          <br />
+          <p id="maxHpVal" class="w3-nomargin">
+            Max HP: 10
+          </p>
+          <br />
+          <button class="" id="hpUp">Buy more 5 more HP for 10 <img src="coin.png" style="margin-bottom: 3px" /></button>
+        </p>
+      </div>
+      <div class="w3-padding w3-bottombar" id="manaArea">
+        <p id="mana">
+          Mana:
+          <progress value="2" max="2" id="manaBar"></progress>
+          <img src="mana.png" />
+          <br />
+          <p id="maxManaVal" class="w3-nomargin">
+            Mana Max: 2
+          </p>
+          <br />
+          <button class="" id="manaUp">Buy more 1 more Mana for 20 <img src="coin.png" style="margin-bottom: 3px" /></button>
+        </p>
+      </div>
+      <div class="w3-padding" id="spellArea">
+        <p>
+          Spells:
+        </p>
+        <div id="spellBlocks">
+          <a href="#" data-toggle="tooltip" title="" class="w3-border w3-padding w3-grey" id="spell1"><svg width="15" height="15">
+              <rect x="2" y="4" width="10" height="10" style="fill:green;opacity:0.5" />
+            </svg></a>
+          <a href="#" data-toggle="tooltip" title="" class="w3-border w3-padding w3-grey" id="spell2"><svg width="15" height="15">
+              <rect x="0" y="7" width="15" height="3" style="fill:white;" />
+            </svg></a>
+          <a href="#" data-toggle="tooltip" title="" class="w3-border w3-padding w3-grey" id="spell3"><svg width="15" height="15">
+              <rect x="7" y="0" width="3" height="15" style="fill:white;" />
+            </svg></a>
+          <a href="#" data-toggle="tooltip" title="" class="w3-border w3-padding" id="spell4"><i class="fa fa-question"></i></a>
+          <a href="#" data-toggle="tooltip" title="" class="w3-border w3-padding" id="spell5"><i class="fa fa-question"></i></a>
+          <br />
+          <br />
+          <a href="#" data-toggle="tooltip" title="" class="w3-border w3-padding" id="spell6"><i class="fa fa-question"></i></a>
+          <a href="#" data-toggle="tooltip" title="" class="w3-border w3-padding" id="spell7"><i class="fa fa-question"></i></a>
+          <a href="#" data-toggle="tooltip" title="" class="w3-border w3-padding" id="spell8"><i class="fa fa-question"></i></a>
+          <a href="#" data-toggle="tooltip" title="" class="w3-border w3-padding" id="spell9"><i class="fa fa-question"></i></a>
+          <a href="#" data-toggle="tooltip" title="" class="w3-border w3-padding" id="spell10"><i class="fa fa-question"></i></a>
+        </div>
+        <br />
+        <button class="w3-margin-top" id="spellUp">Buy the next spell for 10 <img src="coin.png" style="margin-bottom: 3px" /></button>
+      </div>
+      <button class="w3-circle w3-btn w3-border w3-padding w3-right w3-margin w3-hover-grey" id="instruct"><i class="fa fa-question"></i></button>
+    </div>
+    <div id="introModal" class="w3-modal w3-animate-zoom">
+      <div class="w3-modal-content">
+        <div class="w3-container">
+          <header>
+            <h1>Welcome to <img src="logo.png" /></h1>
+            <span onclick="document.getElementById('introModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+          </header>
+          <p>Welcome to the exciting io game, swordster.io! Unlike other io games, swordster is a single
+            player dungeon adventure. Start with a sword and basic spells, and climb your way to the top with
+            laser blasters and powerful magic!</p>
+          <p>Insructions:
+            Look at the middle of the screen. The square in the middle is the <em>dungeon</em>.
+            All the action happens there. You fight enemies, and try to get to the bottom right (the treasure chest)
+            The player is the little green guy in the corner.
+            Move your player around with the arrow keys. Use space to use
+            your selected weapon. Cast your spells with the number keys. Each new spell you learn corresponds to the number keys.
+            You can check info about spells in the <em>spell block</em>. In the spell block, you'll see 10 different
+            blocks. The ones that don't have question marks in them indicate "unlocked spells". Hover over an unlocked spell to see
+            data on it. In addition, you can buy new spells with coins. Above the spell block you'll find
+            the <em>status bar</em> which displays your HP and Mana bar. Mana is what you use to cast your
+            spells. In addition, you can upgrade your HP and Mana in the <em>status bar</em>. Finally, on
+            the left, you will find the <em>weapons bar</em>. Here, you can view satistics about all the
+            weapons in the game. Scroll through the weapons with the up and down arrow keys. You can also
+            buy weapons here. You also will see your coin count here. Coins are the way you buy stuff in the game.
+            Happy Playing!
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="guideModal" class="w3-modal w3-animate-zoom">
+      <div class="w3-modal-content">
+        <div class="w3-container">
+          <header>
+            <h1>Instructions</h1>
+            <span onclick="document.getElementById('guideModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+          </header>
+          <p>Controls: Arrow keys to move. Space to attack. 1-9 keys to cast spells. <br />
+            Spells are funded by mana - you have a mana maximum. <br />
+            Hover over a spell in the spell block bar to see how the spell functions (and what key to use to cast it) <br />
+            Without HP, you die. You also have an HP maximum. <br />
+            Buy new stuff with coins.</p>
+        </div>
+      </div>
+    </div>
+    <img src="floor.png" id="floor" hidden />
+    <img src="wall.png" id="wall" hidden />
+    <img src="playerright.png" id="playerright" hidden />
+    <img src="playerleft.png" id="playerleft" hidden />
+    <img src="playerup.png" id="playerup" hidden />
+    <img src="playerdown.png" id="playerdown" hidden />
+    <img src="sword.png" id="sword" hidden />
+    <img src="bow.png" id="bow" hidden />
+    <img src="bomb.png" id="bomb" hidden />
+    <img src="wand.png" id="wand" hidden />
+    <img src="lasergun.png" id="lasergun" hidden />
+    <img src="blob.png" id="blob" hidden />
+    <img src="blueblob.png" id="blueblob" hidden />
+    <img src="fortress.png" id="fortress" hidden />
+    <img src="homingfort.png" id="homingfort" hidden />
+    <img src="spiral.png" id="spiral" hidden />
+    <img src="chest.png" id="chest" hidden />
+    <img src="chestopen.png" id="chestopen" hidden />
+    <script src="main.js"></script>
+  </div>
+</body>
+
+</html>

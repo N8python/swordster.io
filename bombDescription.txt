@@ -1,0 +1,6 @@
+The Bomb: You drop it somewhere. Then it explodes.
+It's magic.
+Stats:
+Damage: Moderate
+Cooldown: High
+Range: 1 block all directions (after being placed)
